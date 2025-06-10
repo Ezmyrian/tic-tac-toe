@@ -7,7 +7,15 @@ player_one = Player.new(player_one)
 
 puts "What is player two's name?"
 player_two = gets.chomp
-player_two = Player.new(player_two)
+Player.new(player_two)
 
-puts player_one.name
-puts player_two.name
+puts "Is player one X or O?"
+player_one.mark = gets.chomp.upcase
+
+until %w[X O].include?(player_one.mark)
+  puts "Is player one X or O?"
+  player_one.mark = gets.chomp.upcase
+end
+
+board = Board.new
+board.display(board)
