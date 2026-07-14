@@ -7,6 +7,7 @@ class Game
 
   def play_game
     players = players_setup
+    board.display_board_state
   end
 
   def players_setup
