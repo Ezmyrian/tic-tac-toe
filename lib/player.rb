@@ -1,4 +1,6 @@
 class Player
+  attr_accessor :mark
+
   def initialize(player_number)
     @name = name(player_number)
   end
@@ -8,12 +10,20 @@ class Player
     gets.chomp
   end
 
-  def mark
+  def player_1_mark
     mark = ''
     until (mark == 'X') || (mark == 'O')
       puts 'Will player 1 be X or O?'
       mark = gets.chomp.upcase
     end
     @mark = mark
+  end
+
+  def player_2_mark(player_1, player_2)
+    player_2.mark = if player_1.mark == 'X'
+                      'O'
+                    else
+                      'X'
+                    end
   end
 end
