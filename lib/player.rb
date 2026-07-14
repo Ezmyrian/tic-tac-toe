@@ -3,8 +3,8 @@ class Player
     @name = name(player_number)
   end
 
-  def name(number)
-    puts "What is the name of player #{number}?"
+  def name(player_number)
+    puts "What is the name of player #{player_number}?"
     gets.chomp
   end
 
