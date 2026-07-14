@@ -9,11 +9,11 @@ class Player
   end
 
   def mark
-    player = ''
-    until (player == 'X') || (player == 'O')
+    mark = ''
+    until (mark == 'X') || (mark == 'O')
       puts 'Will player 1 be X or O?'
-      player = gets.chomp.upcase
+      mark = gets.chomp.upcase
     end
-    player
+    @mark = mark
   end
 end
