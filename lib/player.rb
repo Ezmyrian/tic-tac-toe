@@ -4,10 +4,10 @@ class Player
   attr_accessor :mark
 
   def initialize(player_number)
-    @name = get_name(player_number)
+    @name = player_name(player_number)
   end
 
-  def get_name(player_number)
+  def player_name(player_number)
     puts "What is the name of player #{player_number}?"
     gets.chomp
   end
