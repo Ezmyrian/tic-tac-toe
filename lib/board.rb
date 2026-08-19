@@ -12,4 +12,9 @@ class Board
     puts '--------'
     puts @board[2].join('|')
   end
+
+  def valid_location?(location)
+    %w[X O].none? { |value| value == location } &&
+      @board.flatten.include?(location)
+  end
 end
