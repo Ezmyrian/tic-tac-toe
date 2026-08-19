@@ -1,7 +1,7 @@
 class Player
   protected
 
-  attr_accessor :mark
+  attr_writer :mark
 
   def initialize(player_number)
     @name = player_name(player_number)
@@ -14,7 +14,7 @@ class Player
 
   public
 
-  attr_reader :name
+  attr_reader :name, :mark
 
   def player_1_mark
     mark = ''
