@@ -17,4 +17,20 @@ class Board
     %w[X O].none? { |value| value == location } &&
       @board.flatten.include?(location)
   end
+
+  def player_move(player)
+    location = ''
+    until valid_location?(location)
+      puts "Where will #{player.name} go?"
+      location = gets.chomp
+    end
+    update_board(location, player.mark)
+  end
+
+  protected
+
+  def update_board(location, mark)
+    index = board.flatten.index(location)
+    board[index / 3][index % 3] = mark
+  end
 end
