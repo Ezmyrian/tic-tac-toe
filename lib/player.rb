@@ -1,4 +1,6 @@
 class Player
+  protected
+
   attr_accessor :mark
 
   def initialize(player_number)
@@ -9,6 +11,8 @@ class Player
     puts "What is the name of player #{player_number}?"
     gets.chomp
   end
+
+  public
 
   def player_1_mark
     mark = ''
