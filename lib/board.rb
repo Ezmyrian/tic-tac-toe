@@ -22,9 +22,19 @@ class Board
     location = ''
     until valid_location?(location)
       puts "Where will #{player.name} go?"
-      location = gets.chomp
+      location = gets.chomp.upcase
     end
     update_board(location, player.mark)
+  end
+
+  def win_or_tie?
+    winning_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
+                            [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    flat_board_array = board.flatten
+    winning_combinations.any? do |array|
+      board_values = array.map { |index| flat_board_array[index] }
+      board_values.uniq.length == 1
+    end
   end
 
   protected
