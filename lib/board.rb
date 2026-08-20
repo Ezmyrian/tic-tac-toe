@@ -27,7 +27,7 @@ class Board
     update_board(location, player.mark)
   end
 
-  def win_or_tie?
+  def win?
     winning_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
                             [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     flat_board_array = board.flatten
@@ -35,6 +35,15 @@ class Board
       board_values = array.map { |index| flat_board_array[index] }
       board_values.uniq.length == 1
     end
+  end
+
+  def tie?
+    flat_board_array = board.flatten
+    flat_board_array.all? { |value| %w[X O].include?(value) } && !win?
+  end
+
+  def win_or_tie?
+    win? || tie?
   end
 
   protected
