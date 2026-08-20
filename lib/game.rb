@@ -16,6 +16,8 @@ class Game
     end
   end
 
+  private
+
   def game_loop(players)
     current_player = players[0]
     end_condition = false
