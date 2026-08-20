@@ -26,7 +26,6 @@ class Board
   end
 
   def tie?
-    flat_board_array = board.flatten
     flat_board_array.all? { |value| %w[X O].include?(value) } && !win?
   end
 
@@ -36,18 +35,21 @@ class Board
 
   private
 
+  def flat_board_array
+    @board.flatten
+  end
+
   def valid_location?(location)
     %w[X O].none? { |value| value == location } &&
-      @board.flatten.include?(location)
+      flat_board_array.include?(location)
   end
 
   def update_board(location, mark)
-    index = board.flatten.index(location)
+    index = flat_board_array.index(location)
     board[index / 3][index % 3] = mark
   end
 
   def win?
-    flat_board_array = board.flatten
     WINNING_COMBINATIONS.any? do |array|
       board_values = array.map { |index| flat_board_array[index] }
       board_values.uniq.length == 1
