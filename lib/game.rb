@@ -8,8 +8,12 @@ class Game
   def play_game
     players = players_setup
     board.display_board_state
-    winner = game_loop(players)
-    puts "#{winner.name} wins!"
+    last_player = game_loop(players)
+    if board.tie?
+      puts 'Tie game'
+    else
+      puts "#{last_player.name} wins!"
+    end
   end
 
   def game_loop(players)
