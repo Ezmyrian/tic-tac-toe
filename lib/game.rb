@@ -8,7 +8,29 @@ class Game
   def play_game
     players = players_setup
     board.display_board_state
-    play_round(players)
+    winner = game_loop(players)
+    puts "#{winner.name} wins!"
+  end
+
+  def game_loop(players)
+    current_player = players[0]
+    end_condition = false
+    until end_condition
+      play_turn(current_player)
+      end_condition = board.win_or_tie?
+      unless end_condition
+        current_player = switch_player(players, current_player)
+      end
+    end
+    current_player
+  end
+
+  def switch_player(players, current_player)
+    if current_player == players[0]
+      players[1]
+    else
+      players[0]
+    end
   end
 
   def players_setup
@@ -19,10 +41,8 @@ class Game
     [player_1, player_2]
   end
 
-  def play_round(players)
-    board.player_move(players[0])
-    board.display_board_state
-    board.player_move(players[1])
+  def play_turn(current_player)
+    board.player_move(current_player)
     board.display_board_state
   end
 end
